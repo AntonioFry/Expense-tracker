@@ -6,6 +6,8 @@ class ExpenseDashboard extends Component {
     super();
     this.state = {
       expenseData: [],
+      categoryData: [],
+      accountData: [],
     }
   }
 
