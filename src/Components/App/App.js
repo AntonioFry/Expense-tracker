@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import LandingPage from '../LandingPage/LandingPage';
+import { mockExpenseData } from '../../Data/mockExpenseData';
 import './App.css';
 import ExpenseDashboard from '../ExpenseDashboard/ExpenseDashboard';
 
@@ -7,7 +8,8 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      pageToggled: 'landing page'
+      pageToggled: 'landing page',
+      expenseData: mockExpenseData,
     }
   }
 
@@ -16,6 +18,7 @@ class App extends Component {
   }
 
   render () {
+    const { expenseData } = this.state
     return (
       <main>
         <header className="page-header">
@@ -26,7 +29,7 @@ class App extends Component {
           </div>
         </header>
         { this.state.pageToggled === 'landing page' ? <LandingPage /> : null }
-        { this.state.pageToggled === 'dashboard' ? <ExpenseDashboard /> : null }
+        { this.state.pageToggled === 'dashboard' ? <ExpenseDashboard expenseData={expenseData} /> : null }
       </main>
     );
   }
