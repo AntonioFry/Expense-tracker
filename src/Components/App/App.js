@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import LandingPage from '../LandingPage/LandingPage';
 import './App.css';
 
 class App extends Component {
@@ -9,15 +10,10 @@ class App extends Component {
       <main>
         <header className="page-header">
           <h1 className="header-title">Expense Tracker</h1>
+          <button>Home</button>
+          <button>Dashboard</button>
         </header>
-        <section className="landing-page-container">
-          <article className="project-info-container">
-            
-          </article>
-          <footer className="external-links-container">
-            
-          </footer>
-        </section>
+        <LandingPage />
       </main>
     );
   }
