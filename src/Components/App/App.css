@@ -1,0 +1,26 @@
+* {
+  box-sizing: border-box;
+}
+
+main {
+  background-color: rgb(117 112 112 / 9%);
+  min-height: 750px;
+}
+
+.page-header {
+  align-items: center;
+  background-color: blueviolet;
+  display: flex;
+  height: 80px;
+}
+
+.header-title {
+  margin: 0px 20px;
+  font-size: 40px;
+  color: white;
+}
+
+.project-info-container {
+  background-color: rgb(255 255 255 / 44%);
+  height: 370px;
+}
