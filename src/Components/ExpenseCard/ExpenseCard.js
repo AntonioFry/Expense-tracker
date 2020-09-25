@@ -5,24 +5,31 @@ class ExpenseCard extends Component {
   constructor() {
     super(this.props)
     this.state = {
+      id: this.props.id,
       account: this.props.account,
       category: this.props.category,
       amount: this.props.amount,
       date: this.props.date,
+      editable: false
     }
   }
 
+  toggleEditable = () => {
+    this.setState({ editable: !this.state.editable })
+  }
+
   render () { 
-    const { date, account, category, amount } = this.state;
+    const { date, account, category, amount, editable } = this.state;
     return (
       <div>
         <tr>
-          <td contentEditable="true">{date}</td>
-          <td contentEditable="true">{account}</td>
-          <td contentEditable="true">{amount}</td>
-          <td contentEditable="true">{category}</td>
+          <td contentEditable={editable}>{date}</td>
+          <td contentEditable={editable}>{account}</td>
+          <td contentEditable={editable}>{amount}</td>
+          <td contentEditable={editable}>{category}</td>
         </tr>
-        <button className="edit-button">edit</button>
+        { editable === false ? <button className="edit-button">edit</button> : null }
+        { editable === true ? <button className="submit-button">Submit Changes</button> : null }
       </div>
     )
   }
