@@ -10,8 +10,10 @@ class App extends Component {
       <main>
         <header className="page-header">
           <h1 className="header-title">Expense Tracker</h1>
-          <button>Home</button>
-          <button>Dashboard</button>
+          <div className="nav-button-container">
+            <button className="nav-button">Home</button>
+            <button className="nav-button">Dashboard</button>
+          </div>
         </header>
         <LandingPage />
       </main>
