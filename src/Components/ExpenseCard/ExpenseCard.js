@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import './ExpenseCard.css';
 
 class ExpenseCard extends Component {
-  constructor() {
-    super(this.props)
+  constructor(props) {
+    super(props)
     this.state = {
       id: this.props.id,
       account: this.props.account,
@@ -21,7 +21,7 @@ class ExpenseCard extends Component {
   render () { 
     const { date, account, category, amount, editable } = this.state;
     return (
-      <div>
+      <div className='table-row-container'>
         <tr>
           <td contentEditable={editable}>{date}</td>
           <td contentEditable={editable}>{account}</td>
