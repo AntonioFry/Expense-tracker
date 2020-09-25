@@ -20,6 +20,26 @@ main {
   color: white;
 }
 
+.nav-button-container {
+  margin: 0px 0px 0px 10px;
+  height: 100%;
+}
+
+.nav-button {
+  background-color: blueviolet;
+  border: none;
+  color: white;
+  font-size: 25px;
+  margin: 0px 10px;
+  height: 100%;
+  width: 150px;
+}
+
+.nav-button:hover {
+  background-color: rgb(255 255 255);
+  color: blueviolet;
+}
+
 .project-info-container {
   background-color: rgb(255 255 255 / 44%);
   height: 370px;
