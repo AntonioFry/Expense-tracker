@@ -4,6 +4,7 @@ import { mockExpenseData } from '../../Data/mockExpenseData';
 import './App.css';
 import ExpenseDashboard from '../ExpenseDashboard/ExpenseDashboard';
 import { mockAccountData } from '../../Data/mockAccountData';
+import AccountDashboard from '../AccountDashboard/AccountDashboard';
 
 class App extends Component {
   constructor() {
@@ -31,7 +32,7 @@ class App extends Component {
   }
 
   render () {
-    const { expenseData } = this.state
+    const { expenseData, accountData } = this.state
     return (
       <main>
         <header className="page-header">
@@ -47,6 +48,11 @@ class App extends Component {
           <ExpenseDashboard 
             expenseData={expenseData}
             submitExpenseChanges={(editedExpense) => this.submitExpenseChanges(editedExpense)}
+          /> 
+        : null }
+        { this.state.pageToggled === 'account' ? 
+          <AccountDashboard
+            accountData={accountData}
           /> 
         : null }
       </main>
