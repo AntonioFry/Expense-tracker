@@ -26,8 +26,8 @@ class ExpenseCard extends Component {
           <td className="table-box" contentEditable={editable}>{account}</td>
           <td className="table-box" contentEditable={editable}>${amount}</td>
           <td className="table-box" contentEditable={editable}>{category}</td>
-          { editable === false ? <button className="edit-button">edit</button> : null }
-          { editable === true ? <button className="submit-button">Submit Changes</button> : null }
+          { editable === false ? <button className="edit-button" onClick={() => this.toggleEditable()}>edit</button> : null }
+          {editable === true ? <button className="submit-button" onClick={() => this.toggleEditable()}>Submit Changes</button> : null }
         </tr>
     )
   }
