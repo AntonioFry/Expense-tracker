@@ -7,12 +7,13 @@ class AccountDashboard extends Component {
   constructor() {
     super();
     this.state = {
-      formToggled: true,
+      editFormToggled: false,
+      addFormToggled: true
     }
   }
 
   render() {
-    const { accountData, addAccount } = this.props;
+    const { accountData, addData, editData } = this.props;
     const mappedAccounts = accountData.map(account => {
       return (
         <AccountCard 
@@ -26,9 +27,12 @@ class AccountDashboard extends Component {
     return (
       <section className="account-dashboard-section">
         {mappedAccounts}
-        <AccountForm
-          addAccount={(type, data) => addAccount(type, data)}
-        />
+        { this.state.addFormToggled === true ? <AccountForm
+          primaryFormAction={(type, data) => addData(type, data)}
+        /> : null }
+        {this.state.editFormToggled === true ? <AccountForm
+          primaryFormAction={(type, data) => editData(type, data)}
+        /> : null}
       </section>
     )
   }

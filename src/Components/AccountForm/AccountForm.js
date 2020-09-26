@@ -7,7 +7,7 @@ class AccountForm extends Component {
       id: '',
       title: '',
       type: '',
-      color: ''
+      color: 'lightblue'
     }
   }
 
@@ -15,13 +15,22 @@ class AccountForm extends Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
+  submitChange = (e) => {
+    e.preventDefault();
+    const { primaryFormAction } = this.props;
+    const newData = { ...this.state };
+    primaryFormAction('accountData', newData);
+  }
+
   render() {
+
     const possibleColors = ['lightblue', 'lightcoral', 'lightgreen', 'lightsalmon', 'lightgrey'];
     const colorOptions = possibleColors.map(color => {
       return (
         <option value={color}>{color.split('').splice(5)}</option>
       )
     })
+
     return (
       <form className="account-form">
         <label className="form-labels">Title</label>
@@ -48,6 +57,7 @@ class AccountForm extends Component {
         >
           {colorOptions}
         </select>
+        <button onClick={(e) => this.submitChange(e)}>Submit</button>
       </form>
     )
   }

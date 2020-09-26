@@ -1,6 +1,6 @@
 export const mockAccountData = [
   {
-    id: 1,
+    id: 3,
     title: 'Peronsal Funds',
     color: 'lightgreen',
     type: 'Cash',
@@ -12,7 +12,7 @@ export const mockAccountData = [
     type: 'Bank'
   },
   {
-    id: 3,
+    id: 1,
     title: 'Essential Funds',
     color: 'lightcoral',
     type: 'Bank'
