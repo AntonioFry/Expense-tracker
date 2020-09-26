@@ -16,16 +16,16 @@ class App extends Component {
     }
   }
 
-  submitAccountChange = (type, newAccountData) => {
-    if (type === 'add') {
-      newAccountData.id = this.state.accountData.length - 1;
-      this.state.accountData.shift(newAccountData)
-    } else if (type === 'edit') {
-      const newAccountData = this.state.accountData.map(account => {
-        return account.id === newAccountData.id ? newAccountData : account;
-      });
-      this.setState({ accountData: newAccountData });
-    }
+  addData = (type, data) => {
+    data.id = this.state[type].length + 1;
+    this.state[type].shift(data);
+  }
+
+  changeData = (type, newData) => {
+    this.state[type].map(account => {
+      return account.id === newData.id ? newData : account;
+    });
+    this.setState({ [this.state[type]]: newData });
   }
 
   submitExpenseChanges = (editedExpense) => {
@@ -65,6 +65,7 @@ class App extends Component {
         { this.state.pageToggled === 'account' ? 
           <AccountDashboard
             accountData={accountData}
+            addAccount={(type, data) => this.addData(type, data)}
           /> 
         : null }
       </main>

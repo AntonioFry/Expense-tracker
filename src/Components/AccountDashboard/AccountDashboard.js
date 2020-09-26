@@ -12,7 +12,7 @@ class AccountDashboard extends Component {
   }
 
   render() {
-    const { accountData } = this.props;
+    const { accountData, addAccount } = this.props;
     const mappedAccounts = accountData.map(account => {
       return (
         <AccountCard 
@@ -26,7 +26,9 @@ class AccountDashboard extends Component {
     return (
       <section className="account-dashboard-section">
         {mappedAccounts}
-        <AccountForm />
+        <AccountForm
+          addAccount={(type, data) => addAccount(type, data)}
+        />
       </section>
     )
   }
