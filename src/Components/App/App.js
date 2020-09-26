@@ -3,6 +3,7 @@ import LandingPage from '../LandingPage/LandingPage';
 import { mockExpenseData } from '../../Data/mockExpenseData';
 import './App.css';
 import ExpenseDashboard from '../ExpenseDashboard/ExpenseDashboard';
+import { mockAccountData } from '../../Data/mockAccountData';
 
 class App extends Component {
   constructor() {
@@ -10,6 +11,7 @@ class App extends Component {
     this.state = {
       pageToggled: 'landing page',
       expenseData: mockExpenseData,
+      accountData: mockAccountData,
     }
   }
 
