@@ -36,11 +36,12 @@ class App extends Component {
           <h1 className="header-title">Expense Tracker</h1>
           <div className="nav-button-container">
             <button className="nav-button" onClick={() => this.changePage('landing page')}>Home</button>
-            <button className="nav-button" onClick={() => this.changePage('dashboard')}>Dashboard</button>
+            <button className="nav-button" onClick={() => this.changePage('expense')}>Expenses</button>
+            <button className="nav-button" onClick={() => this.changePage('account')}>Account</button>
           </div>
         </header>
         { this.state.pageToggled === 'landing page' ? <LandingPage /> : null }
-        { this.state.pageToggled === 'dashboard' ? 
+        { this.state.pageToggled === 'expense' ? 
           <ExpenseDashboard 
             expenseData={expenseData}
             submitExpenseChanges={(editedExpense) => this.submitExpenseChanges(editedExpense)}
