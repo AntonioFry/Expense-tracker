@@ -1,16 +1,24 @@
 import React, { Component } from 'react';
 import ExpenseCard from '../ExpenseCard/ExpenseCard';
 import './ExpenseDashboard.css';
+import ExpenseEditForm from '../ExpenseEditForm/ExpenseEditForm';
 
 class ExpenseDashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      editFormToggled: false,
+      reviewedExpense: {},
     }
   }
 
+  toggleEditForm = async (boolean, data) => {
+    await this.setState({ editFormToggled: boolean });
+    await this.setState({ reviewedExpense: data});
+  };
+
   render() {
+    const { editFormToggled, reviewedExpense } = this.state;
     const { expenseData } = this.props;
 
     const mappedExpenseData = expenseData.map(expense => {
@@ -21,6 +29,7 @@ class ExpenseDashboard extends Component {
           account={expense.accountId}
           category={expense.categoryId}
           date={expense.date}
+          toggleEditForm={(boolean) => this.toggleEditForm(boolean, expense)}
         />
       )
     });
@@ -41,6 +50,13 @@ class ExpenseDashboard extends Component {
               {mappedExpenseData}
             </tbody>
           </table>
+        }
+        { editFormToggled === false ? null : 
+          <ExpenseEditForm
+            reviewedExpense={reviewedExpense}
+            toggleEditForm={(boolean, data) => this.toggleEditForm(boolean, data)}
+            submitExpenseChanges={(editedExpense) => this.props.submitExpenseChanges(editedExpense)}
+          /> 
         }
       </section>
     )

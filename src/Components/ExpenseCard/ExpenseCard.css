@@ -1,3 +1,8 @@
 .table-btn {
   border: none;
+  width: 50px;
+}
+
+.expense-card-btn {
+  width: 100%;
 }

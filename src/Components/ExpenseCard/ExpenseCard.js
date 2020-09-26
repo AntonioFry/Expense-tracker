@@ -1,36 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './ExpenseCard.css';
 
-class ExpenseCard extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      id: this.props.id,
-      account: this.props.account,
-      category: this.props.category,
-      amount: this.props.amount,
-      date: this.props.date,
-      editable: false
-    }
-  }
-
-  toggleEditable = () => {
-    this.setState({ editable: !this.state.editable })
-  }
-
-  render () { 
-    const { date, account, category, amount, editable } = this.state;
-    return (
-        <tr>
-          <td className="table-box">{date}</td>
-          <td className="table-box">{account}</td>
-          <td className="table-box">${amount}</td>
-          <td className="table-box">{category}</td>
-          {editable === false ? <td className="table-btn"><button className="edit-button" onClick={() => this.toggleEditable()}>edit</button></td> : null}
-          {editable === true ? <td className="table-btn"><button className="submit-button" onClick={() => this.toggleEditable()}>Cancel</button></td> : null}
-        </tr>
-    )
-  }
+const ExpenseCard = ({ id, date, account, category, amount, toggleEditForm }) => {
+  return (
+      <tr>
+        <td className="table-box">{date}</td>
+        <td className="table-box">{account}</td>
+        <td className="table-box">${amount}</td>
+        <td className="table-box">{category}</td>
+        <td className="table-btn">
+          <button className="expense-card-btn" onClick={() => toggleEditForm(true, { id, date, account, category, amount })}>Edit</button>
+        </td>
+        <td className="table-btn">
+          <button className="expense-card-btn">Remove</button>
+        </td>
+      </tr>
+  )
 }
 
 export default ExpenseCard
