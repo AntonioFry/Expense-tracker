@@ -12,8 +12,8 @@ class ExpenseDashboard extends Component {
     }
   }
 
-  toggleEditForm = async (data) => {
-    await this.setState({ editFormToggled: true });
+  toggleEditForm = async (boolean, data) => {
+    await this.setState({ editFormToggled: boolean });
     await this.setState({ reviewedExpense: data});
   };
 
@@ -29,7 +29,7 @@ class ExpenseDashboard extends Component {
           account={expense.accountId}
           category={expense.categoryId}
           date={expense.date}
-          toggleEditForm={() => this.toggleEditForm(expense)}
+          toggleEditForm={(boolean) => this.toggleEditForm(boolean, expense)}
         />
       )
     });
@@ -54,6 +54,7 @@ class ExpenseDashboard extends Component {
         { editFormToggled === false ? null : 
           <ExpenseEditForm
             reviewedExpense={reviewedExpense}
+            toggleEditForm={(boolean, data) => this.toggleEditForm(boolean, data)}
             submitExpenseChanges={(editedExpense) => this.props.submitExpenseChanges(editedExpense)}
           /> 
         }

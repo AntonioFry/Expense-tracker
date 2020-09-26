@@ -9,7 +9,7 @@ const ExpenseCard = ({ id, date, account, category, amount, toggleEditForm }) =>
         <td className="table-box">${amount}</td>
         <td className="table-box">{category}</td>
         <td className="table-btn">
-          <button className="expense-card-btn" onClick={() => toggleEditForm({ id, date, account, category, amount })}>Edit</button>
+          <button className="expense-card-btn" onClick={() => toggleEditForm(true, { id, date, account, category, amount })}>Edit</button>
         </td>
         <td className="table-btn">
           <button className="expense-card-btn">Remove</button>

@@ -18,9 +18,10 @@ class ExpenseEditForm extends Component {
 
   submitChange = (e) => {
     e.preventDefault();
-    const { reviewedExpense, submitExpenseChanges } = this.props;
+    const { reviewedExpense, submitExpenseChanges, toggleEditForm } = this.props;
     const editedExpense = { ...this.state, id: reviewedExpense.id };
     submitExpenseChanges(editedExpense);
+    toggleEditForm( false, {})
   }
 
   render() {
