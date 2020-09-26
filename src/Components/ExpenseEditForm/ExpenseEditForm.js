@@ -5,10 +5,22 @@ class ExpenseEditForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: '',
       accountId: '',
       date: '',
       amount: '',
       categoryId: '',
+    }
+  }
+
+  componentDidUpdate() {
+    const { reviewedExpense } = this.props;
+    if (this.state.id !== reviewedExpense.id) {
+      this.setState({ id: reviewedExpense.id })
+      this.setState({ accountId: reviewedExpense.accountId })
+      this.setState({ date: reviewedExpense.date })
+      this.setState({ amount: reviewedExpense.amount })
+      this.setState({ categoryId: reviewedExpense.categoryId })
     }
   }
 
@@ -18,8 +30,8 @@ class ExpenseEditForm extends Component {
 
   submitChange = (e) => {
     e.preventDefault();
-    const { reviewedExpense, submitExpenseChanges, toggleEditForm } = this.props;
-    const editedExpense = { ...this.state, id: reviewedExpense.id };
+    const { submitExpenseChanges, toggleEditForm } = this.props;
+    const editedExpense = { ...this.state };
     submitExpenseChanges(editedExpense);
     toggleEditForm( false, {})
   }
@@ -34,7 +46,7 @@ class ExpenseEditForm extends Component {
           className="edit-expense-input"
           name="accountId"
           placeholder={reviewedExpense.accountId}
-          value={this.state.account}
+          value={this.state.accountId}
           onChange={(e) => this.handleChange(e)}
         />
         <label className="form-labels">Date</label>
@@ -58,7 +70,7 @@ class ExpenseEditForm extends Component {
           className="edit-expense-input"
           placeholder={reviewedExpense.categoryId}
           name="categoryId"
-          value={this.state.category}
+          value={this.state.categoryId}
           onChange={(e) => this.handleChange(e)}
         />
         <button 
