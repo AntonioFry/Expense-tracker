@@ -16,7 +16,12 @@ class AccountForm extends Component {
   }
 
   render() {
-    const possibleColors = []
+    const possibleColors = ['lightblue', 'lightcoral', 'lightgreen', 'lightsalmon', 'lightgrey'];
+    const colorOptions = possibleColors.map(color => {
+      return (
+        <option value={color}>{color.split('').splice(5)}</option>
+      )
+    })
     return (
       <form className="account-form">
         <label className="form-labels">Title</label>
@@ -34,13 +39,15 @@ class AccountForm extends Component {
           onChange={(e) => this.handleChange(e)}
         />
         <label className="form-labels">Color</label>
-        <input
+        <select
           className="edit-expense-input"
           type='select'
           name="color"
           value={this.state.color}
           onChange={(e) => this.handleChange(e)}
-        />
+        >
+          {colorOptions}
+        </select>
       </form>
     )
   }
