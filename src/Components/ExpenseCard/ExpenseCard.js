@@ -22,12 +22,12 @@ class ExpenseCard extends Component {
     const { date, account, category, amount, editable } = this.state;
     return (
         <tr>
-          <td className="table-box" contentEditable={editable}>{date}</td>
-          <td className="table-box" contentEditable={editable}>{account}</td>
-          <td className="table-box" contentEditable={editable}>${amount}</td>
-          <td className="table-box" contentEditable={editable}>{category}</td>
-          { editable === false ? <button className="edit-button" onClick={() => this.toggleEditable()}>edit</button> : null }
-          {editable === true ? <button className="submit-button" onClick={() => this.toggleEditable()}>Submit Changes</button> : null }
+          <td className="table-box">{date}</td>
+          <td className="table-box">{account}</td>
+          <td className="table-box">${amount}</td>
+          <td className="table-box">{category}</td>
+          {editable === false ? <td className="table-btn"><button className="edit-button" onClick={() => this.toggleEditable()}>edit</button></td> : null}
+          {editable === true ? <td className="table-btn"><button className="submit-button" onClick={() => this.toggleEditable()}>Cancel</button></td> : null}
         </tr>
     )
   }
