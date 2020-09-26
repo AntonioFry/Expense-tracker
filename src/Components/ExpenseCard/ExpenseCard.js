@@ -21,16 +21,14 @@ class ExpenseCard extends Component {
   render () { 
     const { date, account, category, amount, editable } = this.state;
     return (
-      <div className='table-row-container'>
         <tr>
-          <td contentEditable={editable}>{date}</td>
-          <td contentEditable={editable}>{account}</td>
-          <td contentEditable={editable}>{amount}</td>
-          <td contentEditable={editable}>{category}</td>
+          <td className="table-box" contentEditable={editable}>{date}</td>
+          <td className="table-box" contentEditable={editable}>{account}</td>
+          <td className="table-box" contentEditable={editable}>${amount}</td>
+          <td className="table-box" contentEditable={editable}>{category}</td>
+          { editable === false ? <button className="edit-button">edit</button> : null }
+          { editable === true ? <button className="submit-button">Submit Changes</button> : null }
         </tr>
-        { editable === false ? <button className="edit-button">edit</button> : null }
-        { editable === true ? <button className="submit-button">Submit Changes</button> : null }
-      </div>
     )
   }
 }
