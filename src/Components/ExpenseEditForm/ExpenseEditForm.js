@@ -5,6 +5,7 @@ class ExpenseEditForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: '',
       accountId: '',
       date: '',
       amount: '',
@@ -14,7 +15,8 @@ class ExpenseEditForm extends Component {
 
   componentDidUpdate() {
     const { reviewedExpense } = this.props;
-    if (this.state.categoryId !== reviewedExpense.categoryId) {
+    if (this.state.id !== reviewedExpense.id) {
+      this.setState({ id: reviewedExpense.id })
       this.setState({ accountId: reviewedExpense.accountId })
       this.setState({ date: reviewedExpense.date })
       this.setState({ amount: reviewedExpense.amount })
@@ -28,8 +30,8 @@ class ExpenseEditForm extends Component {
 
   submitChange = (e) => {
     e.preventDefault();
-    const { reviewedExpense, submitExpenseChanges, toggleEditForm } = this.props;
-    const editedExpense = { ...this.state, id: reviewedExpense.id };
+    const { submitExpenseChanges, toggleEditForm } = this.props;
+    const editedExpense = { ...this.state };
     submitExpenseChanges(editedExpense);
     toggleEditForm( false, {})
   }
