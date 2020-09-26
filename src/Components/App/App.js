@@ -16,6 +16,18 @@ class App extends Component {
     }
   }
 
+  submitAccountChange = (type, newAccountData) => {
+    if (type === 'add') {
+      newAccountData.id = this.state.accountData.length - 1;
+      this.state.accountData.shift(newAccountData)
+    } else if (type === 'edit') {
+      const newAccountData = this.state.accountData.map(account => {
+        return account.id === newAccountData.id ? newAccountData : account;
+      });
+      this.setState({ accountData: newAccountData });
+    }
+  }
+
   submitExpenseChanges = (editedExpense) => {
     const newExpesneData = this.state.expenseData.map(expense => {
       if (editedExpense.id === expense.id) {
