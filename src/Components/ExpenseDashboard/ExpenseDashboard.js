@@ -8,17 +8,17 @@ class ExpenseDashboard extends Component {
     super(props);
     this.state = {
       editFormToggled: false,
-      reviewedExpenseId: null,
+      reviewedExpense: {},
     }
   }
 
-  toggleEditForm = async (id) => {
+  toggleEditForm = async (data) => {
     await this.setState({ editFormToggled: true });
-    await this.setState({ reviewedExpenseId: id });
+    await this.setState({ reviewedExpense: data});
   };
 
   render() {
-    const { editFormToggled, reviewedExpenseId } = this.state;
+    const { editFormToggled, reviewedExpense } = this.state;
     const { expenseData } = this.props;
 
     const mappedExpenseData = expenseData.map(expense => {
@@ -29,7 +29,7 @@ class ExpenseDashboard extends Component {
           account={expense.accountId}
           category={expense.categoryId}
           date={expense.date}
-          toggleEditForm={() => this.toggleEditForm(expense.id)}
+          toggleEditForm={() => this.toggleEditForm(expense)}
         />
       )
     });
@@ -51,7 +51,12 @@ class ExpenseDashboard extends Component {
             </tbody>
           </table>
         }
-        { editFormToggled === false ? null : <ExpenseEditForm id={reviewedExpenseId} /> }
+        { editFormToggled === false ? null : 
+          <ExpenseEditForm
+            reviewedExpense={reviewedExpense}
+            submitExpenseChanges={() => this.props.submitExpenseChanges()}
+          /> 
+        }
       </section>
     )
   }
