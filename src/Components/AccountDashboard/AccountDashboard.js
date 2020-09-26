@@ -10,3 +10,5 @@ class AccountDashboard extends Component {
     )
   }
 }
+
+export default AccountDashboard;
