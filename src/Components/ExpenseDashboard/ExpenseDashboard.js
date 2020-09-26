@@ -12,13 +12,13 @@ class ExpenseDashboard extends Component {
     }
   }
 
-  toggleEditForm = (id) => {
-    this.setState({ editFormToggled: true });
-    this.setState({ reviewedExpenseId: id });
+  toggleEditForm = async (id) => {
+    await this.setState({ editFormToggled: true });
+    await this.setState({ reviewedExpenseId: id });
   };
 
   render() {
-    const { editFormToggled } = this.state;
+    const { editFormToggled, reviewedExpenseId } = this.state;
     const { expenseData } = this.props;
 
     const mappedExpenseData = expenseData.map(expense => {
@@ -29,7 +29,7 @@ class ExpenseDashboard extends Component {
           account={expense.accountId}
           category={expense.categoryId}
           date={expense.date}
-          toggleEditForm={() => this.toggleEditForm()}
+          toggleEditForm={() => this.toggleEditForm(expense.id)}
         />
       )
     });
@@ -51,7 +51,7 @@ class ExpenseDashboard extends Component {
             </tbody>
           </table>
         }
-        { editFormToggled === false ? null : <ExpenseEditForm /> }
+        { editFormToggled === false ? null : <ExpenseEditForm id={reviewedExpenseId} /> }
       </section>
     )
   }
