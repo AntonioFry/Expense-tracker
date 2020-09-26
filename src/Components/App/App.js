@@ -43,7 +43,7 @@ class App extends Component {
         { this.state.pageToggled === 'dashboard' ? 
           <ExpenseDashboard 
             expenseData={expenseData}
-            submitExpenseChanges={() => this.submitExpenseChanges()}
+            submitExpenseChanges={(editedExpense) => this.submitExpenseChanges(editedExpense)}
           /> 
         : null }
       </main>

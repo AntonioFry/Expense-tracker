@@ -54,7 +54,7 @@ class ExpenseDashboard extends Component {
         { editFormToggled === false ? null : 
           <ExpenseEditForm
             reviewedExpense={reviewedExpense}
-            submitExpenseChanges={() => this.props.submitExpenseChanges()}
+            submitExpenseChanges={(editedExpense) => this.props.submitExpenseChanges(editedExpense)}
           /> 
         }
       </section>
