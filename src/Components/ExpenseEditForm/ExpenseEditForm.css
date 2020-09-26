@@ -1,0 +1,13 @@
+.expense-edit-form {
+  display: flex;
+  flex-direction: column;
+  margin: 0px 40%;
+}
+
+.form-labels {
+  margin: 10px 0px 5px;
+}
+
+.submit-change-btn {
+  margin: 10px 0px;
+}
