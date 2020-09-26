@@ -12,6 +12,7 @@ class ExpenseDashboard extends Component {
 
   render() {
     const { expenseData } = this.props;
+
     const mappedExpenseData = expenseData.map(expense => {
       return (
         <ExpenseCard
@@ -22,10 +23,25 @@ class ExpenseDashboard extends Component {
           date={expense.date}
         />
       )
-    })
+    });
+
     return (
       <section className='expense-dashboard-container'>
-        { expenseData === [] ? null : mappedExpenseData }
+        { expenseData === [] ? null :
+          <table className='expense-data-table'>
+            <thead>
+              <tr>
+                <th className='table-box'>Date</th>
+                <th className='table-box'>Account</th>
+                <th className='table-box'>Amount</th>
+                <th className='table-box'>Category</th>
+              </tr>
+            </thead> 
+            <tbody>
+              {mappedExpenseData}
+            </tbody>
+          </table>
+        }
       </section>
     )
   }
