@@ -1,9 +1,9 @@
 import React from 'react';
 
-const AccountCard = () => {
+const AccountCard = ({ id, title, color, type }) => {
   return (
     <article>
-
+      
     </article>
   )
 }

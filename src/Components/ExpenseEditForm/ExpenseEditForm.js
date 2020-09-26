@@ -12,6 +12,16 @@ class ExpenseEditForm extends Component {
     }
   }
 
+  componentDidUpdate() {
+    const { reviewedExpense } = this.props;
+    if (this.state.categoryId !== reviewedExpense.categoryId) {
+      this.setState({ accountId: reviewedExpense.accountId })
+      this.setState({ date: reviewedExpense.date })
+      this.setState({ amount: reviewedExpense.amount })
+      this.setState({ categoryId: reviewedExpense.categoryId })
+    }
+  }
+
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   }
@@ -34,7 +44,7 @@ class ExpenseEditForm extends Component {
           className="edit-expense-input"
           name="accountId"
           placeholder={reviewedExpense.accountId}
-          value={this.state.account}
+          value={this.state.accountId}
           onChange={(e) => this.handleChange(e)}
         />
         <label className="form-labels">Date</label>
@@ -58,7 +68,7 @@ class ExpenseEditForm extends Component {
           className="edit-expense-input"
           placeholder={reviewedExpense.categoryId}
           name="categoryId"
-          value={this.state.category}
+          value={this.state.categoryId}
           onChange={(e) => this.handleChange(e)}
         />
         <button 
