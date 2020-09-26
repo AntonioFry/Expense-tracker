@@ -13,6 +13,17 @@ class App extends Component {
     }
   }
 
+  submitExpenseChanges = (editedExpense) => {
+    const newExpesneData = this.state.expenseData.map(expense => {
+      if (editedExpense.id === expense.id) {
+        return editedExpense
+      } else {
+        return expense
+      }
+    });
+    this.setState({ expenseData: newExpesneData })
+  };
+
   changePage = (pageName) => {
     this.setState({ pageToggled: pageName });
   }
@@ -29,7 +40,12 @@ class App extends Component {
           </div>
         </header>
         { this.state.pageToggled === 'landing page' ? <LandingPage /> : null }
-        { this.state.pageToggled === 'dashboard' ? <ExpenseDashboard expenseData={expenseData} /> : null }
+        { this.state.pageToggled === 'dashboard' ? 
+          <ExpenseDashboard 
+            expenseData={expenseData}
+            submitExpenseChanges={() => this.submitExpenseChanges()}
+          /> 
+        : null }
       </main>
     );
   }
