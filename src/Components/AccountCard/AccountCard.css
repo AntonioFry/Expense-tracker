@@ -1,0 +1,18 @@
+.account-card {
+  border: 1px solid rgb(117 112 112 / 9%);
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 0px;
+}
+
+.account-card-heading {
+  margin: 0px 8px;
+}
+
+.account-card-text {
+  margin: 15px 8px;
+}
+
+.account-info-label {
+  font-weight: bold;
+}

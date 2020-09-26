@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AccountCard from '../AccountCard/AccountCard';
+import './AccountDashboard.css';
 
 class AccountDashboard extends Component {
 

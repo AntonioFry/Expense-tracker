@@ -1,16 +1,17 @@
 import React from 'react';
+import './AccountCard.css';
 
 const AccountCard = ({ id, title, color, type }) => {
   const headerColorStyle = {
     'backgroundColor': color
   }
   return (
-    <article>
+    <article className="account-card">
       <header className='account-card-header' style={headerColorStyle}>
-        <h3>Account #{id}</h3>
+        <h3 className='account-card-heading'>Account #{id}</h3>
       </header>
-      <p><span className="account-info-label">Account Title:</span> {title}</p>
-      <p><span className="account-info-label">Type:</span> {type}</p>
+      <p className="account-card-text"><span className="account-info-label">Account Title:</span> {title}</p>
+      <p className="account-card-text"><span className="account-info-label">Type:</span> {type}</p>
     </article>
   )
 }

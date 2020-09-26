@@ -22,7 +22,9 @@ main {
 
 .nav-button-container {
   margin: 0px 0px 0px 10px;
+  display: flex;
   height: 100%;
+  overflow: scroll;
 }
 
 .nav-button {
@@ -30,7 +32,7 @@ main {
   border: none;
   color: white;
   font-size: 25px;
-  margin: 0px 10px;
+  margin: 0px;
   height: 100%;
   width: 150px;
 }
