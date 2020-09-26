@@ -8,6 +8,8 @@ const ExpenseCard = ({ date, account, category, amount }) => {
         <td className="table-box">{account}</td>
         <td className="table-box">${amount}</td>
         <td className="table-box">{category}</td>
+        <td className="table-btn"><button className="expense-card-btn">Edit</button></td>
+        <td className="table-btn"><button className="expense-card-btn">Remove</button></td>
       </tr>
   )
 }
