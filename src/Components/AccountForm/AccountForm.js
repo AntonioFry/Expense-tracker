@@ -45,3 +45,5 @@ class AccountForm extends Component {
     )
   }
 }
+
+export default AccountForm;

@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
 import AccountCard from '../AccountCard/AccountCard';
+import AccountForm from '../AccountForm/AccountForm';
 import './AccountDashboard.css';
 
 class AccountDashboard extends Component {
+  constructor() {
+    super();
+    this.state = {
+      formToggled: true,
+    }
+  }
 
   render() {
     const { accountData } = this.props;
@@ -19,6 +26,7 @@ class AccountDashboard extends Component {
     return (
       <section className="account-dashboard-section">
         {mappedAccounts}
+        <AccountForm />
       </section>
     )
   }
