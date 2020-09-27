@@ -23,11 +23,12 @@ class AccountDashboard extends Component {
   }
 
   render() {
-    const { accountData, addData, changeData } = this.props;
+    const { accountData, addData, changeData, removeData } = this.props;
     const mappedAccounts = accountData.map(account => {
       return (
         <AccountCard 
           id={account.id}
+          removeData={(type, targetDataId) => removeData(type, targetDataId)}
           title={account.title}
           color={account.color}
           type={account.type}

@@ -30,8 +30,10 @@ class App extends Component {
     this.setState({ [type]: newDataCollection });
   }
 
-  removeData = (type, targetData) => {
-    const newDataCollection = this.state[type].splice(targetData.id - 1, 1) 
+  removeData = (type, targetDataId) => {
+    const newDataCollection = this.state[type].filter(data => {
+      return data.id === targetDataId ? null : data;
+    });
     this.setState({ [type]: newDataCollection });
   };
 
@@ -72,7 +74,7 @@ class App extends Component {
         { this.state.pageToggled === 'account' ? 
           <AccountDashboard
             accountData={accountData}
-            removeData={(type, targetData) => this.removeData(type, targetData)}
+            removeData={(type, targetDataId) => this.removeData(type, targetDataId)}
             changeData={(type, newData) => this.changeData(type, newData)}
             addData={(type, data) => this.addData(type, data)}
           /> 
