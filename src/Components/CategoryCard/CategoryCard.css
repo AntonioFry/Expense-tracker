@@ -1,0 +1,30 @@
+.category-card {
+  align-content: space-between;
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  height: 150px;
+  margin: 35px 0px;
+  overflow: hidden;
+  width: 75%;
+}
+
+.category-title {
+  margin: 25px 20px
+}
+
+.category-card-btn-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.category-card-btn {
+  background-color: transparent;
+  border: 3px solid transparent;
+  padding: 3px 4px;
+}
+
+.category-card-btn:hover {
+  background-color: white;
+}
