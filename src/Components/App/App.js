@@ -87,6 +87,9 @@ class App extends Component {
         { this.state.pageToggled === 'category' ?
           <CategoryDashboard
             categoryData={categoryData}
+            removeData={(type, targetDataId) => this.removeData(type, targetDataId)}
+            changeData={(type, newData) => this.changeData(type, newData)}
+            addData={(type, data) => this.addData(type, data)}
           />
         : null }
       </main>
