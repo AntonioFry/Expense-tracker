@@ -1,8 +1,9 @@
 .account-dashboard-section {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  padding: 20px;
+  gap: 30px 0px;
+  justify-items: center;
+  padding: 20px 0px;
 }
 
 .add-account-btn {
@@ -11,6 +12,7 @@
   color: rgb(117 112 112 / 40%);
   cursor: pointer;
   font-size: 75px;
+  width: 80%;
 }
 
 .add-account-btn:hover {

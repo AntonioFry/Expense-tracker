@@ -8,29 +8,35 @@ class ExpenseDashboard extends Component {
     super(props);
     this.state = {
       editFormToggled: false,
+      addFormToggled: false,
       reviewedExpense: {},
     }
   }
 
-  toggleEditForm = async (boolean, data) => {
-    await this.setState({ editFormToggled: boolean });
-    await this.setState({ reviewedExpense: data});
+  toggleForm = async (type, boolean, data) => {
+    if (type === 'edit') {
+      await this.setState({ editFormToggled: boolean });
+      await this.setState({ reviewedExpense: data });
+    } else if (type === 'add') {
+      await this.setState({ addFormToggled: boolean })
+    }
   };
 
   render() {
-    const { editFormToggled, reviewedExpense } = this.state;
-    const { expenseData, removeData } = this.props;
+    const { editFormToggled, addFormToggled, reviewedExpense } = this.state;
+    const { expenseData, removeData, changeData, addData } = this.props;
 
     const mappedExpenseData = expenseData.map(expense => {
       return (
         <ExpenseCard
           id={expense.id}
+          key={expense.id * Date.now()}
           amount={expense.amount}
           account={expense.accountId}
           category={expense.categoryId}
           date={expense.date}
           removeData={(type, targetDataId) => removeData(type, targetDataId)}
-          toggleEditForm={(boolean) => this.toggleEditForm(boolean, expense)}
+          toggleForm={(type, boolean, data) => this.toggleForm(type, boolean, data)}
         />
       )
     });
@@ -52,12 +58,26 @@ class ExpenseDashboard extends Component {
             </tbody>
           </table>
         }
+        { this.state.addFormToggled === false ? 
+          <button className="add-expense-btn" onClick={() => this.toggleForm('add', true, {})}>+</button>
+        : null }
         { editFormToggled === false ? null : 
           <ExpenseEditForm
+            key={Date.now()}
             reviewedExpense={reviewedExpense}
-            toggleEditForm={(boolean, data) => this.toggleEditForm(boolean, data)}
-            submitExpenseChanges={(editedExpense) => this.props.submitExpenseChanges(editedExpense)}
+            formType={'edit'}
+            toggleForm={(type ,boolean, data) => this.toggleForm(type ,boolean, data)}
+            primaryFormAction={(type, boolean, newData) => changeData(type, boolean, newData)}
           /> 
+        }
+        { addFormToggled === false ? null :
+          <ExpenseEditForm
+            key={Date.now()}
+            reviewedExpense={reviewedExpense}
+            formType={'add'}
+            toggleForm={(type, boolean, data) => this.toggleForm(type, boolean, data)}
+            primaryFormAction={(type, boolean, newData) => addData(type, boolean, newData)}
+          />
         }
       </section>
     )

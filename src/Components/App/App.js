@@ -73,7 +73,8 @@ class App extends Component {
           <ExpenseDashboard 
             expenseData={expenseData}
             removeData={(type, targetDataId) => this.removeData(type, targetDataId)}
-            submitExpenseChanges={(editedExpense) => this.submitExpenseChanges(editedExpense)}
+            changeData={(type, newData) => this.changeData(type, newData)}
+            addData={(type, data) => this.addData(type, data)}
           /> 
         : null }
         { this.state.pageToggled === 'account' ? 

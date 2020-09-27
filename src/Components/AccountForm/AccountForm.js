@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './AccountForm.css';
 
 class AccountForm extends Component {
   constructor() {
@@ -34,6 +35,7 @@ class AccountForm extends Component {
   }
 
   render() {
+    const { toggleForm, formType } = this.props;
 
     const possibleColors = ['lightblue', 'lightcoral', 'lightgreen', 'lightsalmon', 'lightgrey'];
     const colorOptions = possibleColors.map(color => {
@@ -43,33 +45,40 @@ class AccountForm extends Component {
     })
 
     return (
-      <form className="account-form">
-        <label className="form-labels">Title</label>
-        <input
-          className="edit-expense-input"
-          name="title"
-          value={this.state.title}
-          onChange={(e) => this.handleChange(e)}
-        />
-        <label className="form-labels">Type</label>
-        <input
-          className="edit-expense-input"
-          name="type"
-          value={this.state.type}
-          onChange={(e) => this.handleChange(e)}
-        />
-        <label className="form-labels">Color</label>
-        <select
-          className="edit-expense-input"
-          type='select'
-          name="color"
-          value={this.state.color}
-          onChange={(e) => this.handleChange(e)}
-        >
-          {colorOptions}
-        </select>
-        <button onClick={(e) => this.submitChange(e)}>Submit</button>
-      </form>
+      <section className="faded-background">
+        <form className="account-form">
+          <button className='close-window-btn' onClick={() => toggleForm(formType, false, {})}>X</button>
+          <label className="form-labels">Title</label>
+          <input
+            className="edit-expense-input"
+            name="title"
+            value={this.state.title}
+            onChange={(e) => this.handleChange(e)}
+          />
+          <label className="form-labels">Type</label>
+          <input
+            className="edit-expense-input"
+            name="type"
+            value={this.state.type}
+            onChange={(e) => this.handleChange(e)}
+          />
+          <label className="form-labels">Color</label>
+          <select
+            className="edit-expense-input"
+            type='select'
+            name="color"
+            value={this.state.color}
+            onChange={(e) => this.handleChange(e)}
+          >
+            {colorOptions}
+          </select>
+          <button 
+            className='submit-change-btn' 
+            onClick={(e) => this.submitChange(e)}
+            >Submit
+          </button>
+        </form>
+      </section>
     )
   }
 }

@@ -15,12 +15,12 @@ class ExpenseEditForm extends Component {
 
   componentDidUpdate() {
     const { reviewedExpense } = this.props;
-    if (this.state.id !== reviewedExpense.id) {
+    if (this.state.id !== reviewedExpense.id && reviewedExpense.id !== undefined) {
       this.setState({ id: reviewedExpense.id })
-      this.setState({ accountId: reviewedExpense.accountId })
+      this.setState({ accountId: reviewedExpense.account })
       this.setState({ date: reviewedExpense.date })
       this.setState({ amount: reviewedExpense.amount })
-      this.setState({ categoryId: reviewedExpense.categoryId })
+      this.setState({ categoryId: reviewedExpense.category })
     }
   }
 
@@ -30,55 +30,53 @@ class ExpenseEditForm extends Component {
 
   submitChange = (e) => {
     e.preventDefault();
-    const { submitExpenseChanges, toggleEditForm } = this.props;
-    const editedExpense = { ...this.state };
-    submitExpenseChanges(editedExpense);
-    toggleEditForm( false, {})
+    const { primaryFormAction, toggleForm, formType} = this.props;
+    const newData = { ...this.state };
+    primaryFormAction('expenseData', newData);
+    toggleForm( formType, false, {})
   }
 
   render() {
-    const { reviewedExpense } = this.props;
+    const { toggleForm, formType } = this.props; 
     return (
-      <form className='expense-edit-form'>
-        <h2>Editing Expense #{reviewedExpense.id}</h2>
-        <label className="form-labels">Account</label>
-        <input
-          className="edit-expense-input"
-          name="accountId"
-          placeholder={reviewedExpense.accountId}
-          value={this.state.accountId}
-          onChange={(e) => this.handleChange(e)}
-        />
-        <label className="form-labels">Date</label>
-        <input
-          className="edit-expense-input"
-          placeholder={reviewedExpense.date}
-          name="date"
-          value={this.state.date}
-          onChange={(e) => this.handleChange(e)}
-        />
-        <label className="form-labels">Amount</label>
-        <input
-          className="edit-expense-input"
-          placeholder={reviewedExpense.amount}
-          name="amount"
-          value={this.state.amount}
-          onChange={(e) => this.handleChange(e)}
-        />
-        <label className="form-labels">Category</label>
-        <input
-          className="edit-expense-input"
-          placeholder={reviewedExpense.categoryId}
-          name="categoryId"
-          value={this.state.categoryId}
-          onChange={(e) => this.handleChange(e)}
-        />
-        <button 
-          className="submit-change-btn"
-          onClick={(e) => this.submitChange(e)}
-          >Submit Changes
-        </button>
-      </form>
+      <section className="faded-background">
+        <form className='expense-edit-form'>
+          <button className='close-window-btn' onClick={() => toggleForm(formType, false, {})}>X</button>
+          <label className="form-labels">Account</label>
+          <input
+            className="edit-expense-input"
+            name="accountId"
+            value={this.state.accountId}
+            onChange={(e) => this.handleChange(e)}
+          />
+          <label className="form-labels">Date</label>
+          <input
+            className="edit-expense-input"
+            name="date"
+            value={this.state.date}
+            onChange={(e) => this.handleChange(e)}
+          />
+          <label className="form-labels">Amount</label>
+          <input
+            className="edit-expense-input"
+            name="amount"
+            value={this.state.amount}
+            onChange={(e) => this.handleChange(e)}
+          />
+          <label className="form-labels">Category</label>
+          <input
+            className="edit-expense-input"
+            name="categoryId"
+            value={this.state.categoryId}
+            onChange={(e) => this.handleChange(e)}
+          />
+          <button 
+            className="submit-change-btn"
+            onClick={(e) => this.submitChange(e)}
+            >Submit Changes
+          </button>
+        </form>
+      </section>
     )
   }
 }

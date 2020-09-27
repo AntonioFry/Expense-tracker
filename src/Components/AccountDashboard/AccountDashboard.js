@@ -28,6 +28,7 @@ class AccountDashboard extends Component {
       return (
         <AccountCard 
           id={account.id}
+          key={account.id * Date.now()}
           removeData={(type, targetDataId) => removeData(type, targetDataId)}
           title={account.title}
           color={account.color}
@@ -39,19 +40,25 @@ class AccountDashboard extends Component {
     return (
       <section className="account-dashboard-section">
         {mappedAccounts}
-        { this.state.addFormToggled === true ? <AccountForm
-          reviewedAccount={this.state.reviewedAccount}
-          formType={'add'}
-          toggleForm={(type, boolean, data) => this.toggleForm(type, boolean, data)}
-          primaryFormAction={(type, data) => addData(type, data)}
-        /> : null }
-        {this.state.editFormToggled === true ? <AccountForm
-          reviewedAccount={this.state.reviewedAccount}
-          formType={'edit'}
-          toggleForm={(type, boolean, data) => this.toggleForm(type, boolean, data)}
-          primaryFormAction={(type, newData) => changeData(type, newData)}
-        /> : null}
-        <button className="add-account-btn" onClick={() => this.toggleForm('add', true, {})}>+</button>
+        { this.state.addFormToggled === true ? 
+          <AccountForm
+            reviewedAccount={this.state.reviewedAccount}
+            key={Date.now()}
+            formType={'add'}
+            toggleForm={(type, boolean, data) => this.toggleForm(type, boolean, data)}
+            primaryFormAction={(type, data) => addData(type, data)}
+          /> : null }
+        {this.state.editFormToggled === true ? 
+          <AccountForm
+            reviewedAccount={this.state.reviewedAccount}
+            key={Date.now()}
+            formType={'edit'}
+            toggleForm={(type, boolean, data) => this.toggleForm(type, boolean, data)}
+            primaryFormAction={(type, newData) => changeData(type, newData)}
+          /> : null}
+        { this.state.addFormToggled === false ?
+          <button className="add-account-btn" onClick={() => this.toggleForm('add', true, {})}>+</button>
+        : null }
       </section>
     )
   }
