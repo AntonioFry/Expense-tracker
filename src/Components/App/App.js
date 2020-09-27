@@ -68,6 +68,7 @@ class App extends Component {
         { this.state.pageToggled === 'expense' ? 
           <ExpenseDashboard 
             expenseData={expenseData}
+            removeData={(type, targetDataId) => this.removeData(type, targetDataId)}
             submitExpenseChanges={(editedExpense) => this.submitExpenseChanges(editedExpense)}
           /> 
         : null }
