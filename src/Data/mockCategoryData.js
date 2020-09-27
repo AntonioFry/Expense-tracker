@@ -7,11 +7,11 @@ export const mockCategoryData = [
   {
     id: 2,
     type: 'Grocery',
-    color: 'lightsalmon'
+    color: 'lightblue'
   },
   {
     id: 3,
     type: 'Music Supplies',
-    color: 'lightsalmon'
+    color: 'lightcoral'
   }
 ]
