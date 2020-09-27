@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
 class CategoryDashboard extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       
     }

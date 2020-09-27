@@ -5,6 +5,7 @@ import './App.css';
 import ExpenseDashboard from '../ExpenseDashboard/ExpenseDashboard';
 import { mockAccountData } from '../../Data/mockAccountData';
 import AccountDashboard from '../AccountDashboard/AccountDashboard';
+import { mockCategoryData } from '../../Data/mockCategoryData';
 
 class App extends Component {
   constructor() {
@@ -13,6 +14,7 @@ class App extends Component {
       pageToggled: 'landing page',
       expenseData: mockExpenseData,
       accountData: mockAccountData,
+      categoryData: mockCategoryData
     }
   }
 
