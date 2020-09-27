@@ -6,7 +6,18 @@ class CategoryDashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      editFormToggled: false,
+      addFormToggled: false,
+      reviewedCategory: {},
+    }
+  }
 
+  toggleForm = async (type, boolean, data) => {
+    if (type === 'edit') {
+      await this.setState({ editFormToggled: boolean });
+      await this.setState({ reviewedCategory: data });
+    } else if (type === 'add') {
+      await this.setState({ addFormToggled: boolean })
     }
   }
 
