@@ -1,7 +1,7 @@
 import React from 'react';
 import './CategoryCard.css';
 
-const CategoryCard = ({ id, type, color, toggleForm }) => {
+const CategoryCard = ({ id, type, color, toggleForm, removeData }) => {
   const backgroundColor = {
     'backgroundColor': color
   }
@@ -16,7 +16,7 @@ const CategoryCard = ({ id, type, color, toggleForm }) => {
           onClick={() => toggleForm('edit', true, { id, color, type })}
           >Edit
         </button>
-        <button className='category-card-btn'>Remove</button>
+        <button className='category-card-btn' onClick={() => removeData('categoryData', id)}>Remove</button>
       </div>
     </article>
   )
