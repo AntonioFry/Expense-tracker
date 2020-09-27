@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 
 class CategoryDashboard extends Component {
+  constructor() {
+    super();
+    this.state = {
+      
+    }
+  }
 
   render() {
     return (
