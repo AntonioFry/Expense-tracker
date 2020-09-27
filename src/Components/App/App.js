@@ -6,6 +6,7 @@ import ExpenseDashboard from '../ExpenseDashboard/ExpenseDashboard';
 import { mockAccountData } from '../../Data/mockAccountData';
 import AccountDashboard from '../AccountDashboard/AccountDashboard';
 import { mockCategoryData } from '../../Data/mockCategoryData';
+import CategoryDashboard from '../CategoryDashboard/CategoryDashboard';
 
 class App extends Component {
   constructor() {
@@ -55,7 +56,7 @@ class App extends Component {
   }
 
   render () {
-    const { expenseData, accountData } = this.state
+    const { expenseData, accountData, categoryData } = this.state
     return (
       <main>
         <header className="page-header">
@@ -64,6 +65,7 @@ class App extends Component {
             <button className="nav-button" onClick={() => this.changePage('landing page')}>Home</button>
             <button className="nav-button" onClick={() => this.changePage('expense')}>Expenses</button>
             <button className="nav-button" onClick={() => this.changePage('account')}>Account</button>
+            <button className="nav-button" onClick={() => this.changePage('category')}>Category</button>
           </div>
         </header>
         { this.state.pageToggled === 'landing page' ? <LandingPage /> : null }
@@ -81,6 +83,11 @@ class App extends Component {
             changeData={(type, newData) => this.changeData(type, newData)}
             addData={(type, data) => this.addData(type, data)}
           /> 
+        : null }
+        { this.state.pageToggled === 'category' ?
+          <CategoryDashboard
+            categoryData={categoryData}
+          />
         : null }
       </main>
     );
