@@ -8,18 +8,24 @@ class ExpenseDashboard extends Component {
     super(props);
     this.state = {
       editFormToggled: false,
+      addFormToggled: false,
       reviewedExpense: {},
     }
   }
 
-  toggleEditForm = async (boolean, data) => {
-    await this.setState({ editFormToggled: boolean });
-    await this.setState({ reviewedExpense: data});
+  toggleForm = async (type, boolean, data) => {
+    if (type === 'edit') {
+      await this.setState({ editFormToggled: boolean });
+      await this.setState({ reviewedExpense: data });
+      console.log(this.state.reviewedExpense)
+    } else if (type === 'add') {
+      await this.setState({ addFormToggled: boolean })
+    }
   };
 
   render() {
-    const { editFormToggled, reviewedExpense } = this.state;
-    const { expenseData, removeData } = this.props;
+    const { editFormToggled, addFormToggled, reviewedExpense } = this.state;
+    const { expenseData, removeData, changeData, addData } = this.props;
 
     const mappedExpenseData = expenseData.map(expense => {
       return (
@@ -30,7 +36,7 @@ class ExpenseDashboard extends Component {
           category={expense.categoryId}
           date={expense.date}
           removeData={(type, targetDataId) => removeData(type, targetDataId)}
-          toggleEditForm={(boolean) => this.toggleEditForm(boolean, expense)}
+          toggleForm={(type, boolean, data) => this.toggleForm(type, boolean, data)}
         />
       )
     });
@@ -55,9 +61,18 @@ class ExpenseDashboard extends Component {
         { editFormToggled === false ? null : 
           <ExpenseEditForm
             reviewedExpense={reviewedExpense}
-            toggleEditForm={(boolean, data) => this.toggleEditForm(boolean, data)}
-            submitExpenseChanges={(editedExpense) => this.props.submitExpenseChanges(editedExpense)}
+            formType={'edit'}
+            toggleForm={(type ,boolean, data) => this.toggleForm(type ,boolean, data)}
+            primaryFormAction={(type, boolean, newData) => changeData(type, boolean, newData)}
           /> 
+        }
+        { addFormToggled === false ? null :
+          <ExpenseEditForm
+            reviewedExpense={reviewedExpense}
+            formType={'add'}
+            toggleForm={(type, boolean, data) => this.toggleForm(type, boolean, data)}
+            addData={(type, boolean, newData) => addData(type, boolean, newData)}
+          />
         }
       </section>
     )
