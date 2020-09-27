@@ -57,6 +57,7 @@ class ExpenseDashboard extends Component {
             </tbody>
           </table>
         }
+        <button className="add-expense-btn" onClick={() => this.toggleForm('add', true, {})}>+</button>
         { editFormToggled === false ? null : 
           <ExpenseEditForm
             reviewedExpense={reviewedExpense}

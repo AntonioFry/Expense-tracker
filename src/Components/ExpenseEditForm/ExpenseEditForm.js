@@ -37,10 +37,8 @@ class ExpenseEditForm extends Component {
   }
 
   render() {
-    const { reviewedExpense } = this.props;
     return (
       <form className='expense-edit-form'>
-        <h2>Editing Expense #{reviewedExpense.id}</h2>
         <label className="form-labels">Account</label>
         <input
           className="edit-expense-input"

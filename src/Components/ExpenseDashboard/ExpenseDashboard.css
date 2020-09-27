@@ -1,6 +1,7 @@
 .expense-data-table {
-  width: 80%;
   border-collapse: collapse;
+  margin: 40px 0px 10px;
+  width: 80%;
 }
 
 .expense-dashboard-container {
@@ -10,6 +11,22 @@
 }
 
 .table-box {
-  border: 1px solid rgb(117 112 112 / 9%);
+  border: 1px solid rgb(117 112 112 / 30%);
   text-align: center;
+}
+
+.add-expense-btn {
+  border: 1px solid rgb(117 112 112 / 30%);
+  color: rgb(117 112 112 / 50%);
+  cursor: pointer;
+  font-size: 20px;
+  height: 30px;
+  margin: 10px 80px;
+  text-align: center;
+  width: 80%
+}
+
+.add-expense-btn:hover {
+  border: 1px solid rgb(117 112 112 / 70%);
+  color: rgb(117 112 112 / 90%);
 }

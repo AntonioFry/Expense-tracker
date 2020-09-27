@@ -1,8 +1,15 @@
 .table-btn {
-  border: none;
+  border: 1px solid rgb(117 112 112 / 30%);
   width: 50px;
 }
 
+.table-btn:hover {
+  border: 1px solid rgb(117 112 112 / 70%);
+}
+
 .expense-card-btn {
+  border: none;
+  color: black;
+  cursor: pointer;
   width: 100%;
 }
