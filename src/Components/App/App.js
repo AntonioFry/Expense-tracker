@@ -24,11 +24,18 @@ class App extends Component {
   }
 
   changeData = (type, newData) => {
-    const newDataCollection = this.state[type].map(account => {
-      return account.id === newData.id ? newData : account;
+    const newDataCollection = this.state[type].map(data => {
+      return data.id === newData.id ? newData : data;
     });
     this.setState({ [type]: newDataCollection });
   }
+
+  removeData = (type, targetDataId) => {
+    const newDataCollection = this.state[type].filter(data => {
+      return data.id === targetDataId ? null : data;
+    });
+    this.setState({ [type]: newDataCollection });
+  };
 
   submitExpenseChanges = (editedExpense) => {
     const newExpesneData = this.state.expenseData.map(expense => {
@@ -61,12 +68,14 @@ class App extends Component {
         { this.state.pageToggled === 'expense' ? 
           <ExpenseDashboard 
             expenseData={expenseData}
+            removeData={(type, targetDataId) => this.removeData(type, targetDataId)}
             submitExpenseChanges={(editedExpense) => this.submitExpenseChanges(editedExpense)}
           /> 
         : null }
         { this.state.pageToggled === 'account' ? 
           <AccountDashboard
             accountData={accountData}
+            removeData={(type, targetDataId) => this.removeData(type, targetDataId)}
             changeData={(type, newData) => this.changeData(type, newData)}
             addData={(type, data) => this.addData(type, data)}
           /> 

@@ -19,7 +19,7 @@ class ExpenseDashboard extends Component {
 
   render() {
     const { editFormToggled, reviewedExpense } = this.state;
-    const { expenseData } = this.props;
+    const { expenseData, removeData } = this.props;
 
     const mappedExpenseData = expenseData.map(expense => {
       return (
@@ -29,6 +29,7 @@ class ExpenseDashboard extends Component {
           account={expense.accountId}
           category={expense.categoryId}
           date={expense.date}
+          removeData={(type, targetDataId) => removeData(type, targetDataId)}
           toggleEditForm={(boolean) => this.toggleEditForm(boolean, expense)}
         />
       )
