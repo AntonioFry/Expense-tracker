@@ -30,6 +30,7 @@ class ExpenseDashboard extends Component {
       return (
         <ExpenseCard
           id={expense.id}
+          key={expense.id * Date.now()}
           amount={expense.amount}
           account={expense.accountId}
           category={expense.categoryId}
@@ -57,9 +58,12 @@ class ExpenseDashboard extends Component {
             </tbody>
           </table>
         }
-        <button className="add-expense-btn" onClick={() => this.toggleForm('add', true, {})}>+</button>
+        { this.state.addFormToggled === false ? 
+          <button className="add-expense-btn" onClick={() => this.toggleForm('add', true, {})}>+</button>
+        : null }
         { editFormToggled === false ? null : 
           <ExpenseEditForm
+            key={Date.now()}
             reviewedExpense={reviewedExpense}
             formType={'edit'}
             toggleForm={(type ,boolean, data) => this.toggleForm(type ,boolean, data)}
@@ -68,10 +72,11 @@ class ExpenseDashboard extends Component {
         }
         { addFormToggled === false ? null :
           <ExpenseEditForm
+            key={Date.now()}
             reviewedExpense={reviewedExpense}
             formType={'add'}
             toggleForm={(type, boolean, data) => this.toggleForm(type, boolean, data)}
-            addData={(type, boolean, newData) => addData(type, boolean, newData)}
+            primaryFormAction={(type, boolean, newData) => addData(type, boolean, newData)}
           />
         }
       </section>

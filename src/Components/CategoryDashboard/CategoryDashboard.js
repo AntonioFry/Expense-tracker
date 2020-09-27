@@ -29,6 +29,7 @@ class CategoryDashboard extends Component {
       return (
         <CategoryCard
           id={category.id}
+          key={category.id * Date.now()}
           removeData={(type, targetDataId) => removeData(type, targetDataId)}
           type={category.type}
           color={category.color}
@@ -39,18 +40,22 @@ class CategoryDashboard extends Component {
     return (
       <section className="category-dashboard-section">
         {mappedCategoryData}
-        { this.state.addFormToggled === true ? <CategoryForm 
-          reviewedCategory={this.state.reviewedCategory}
-          toggleForm={(type, boolean, data) => this.toggleForm(type, boolean, data)}
-          formType={'add'}
-          primaryFormAction={(type, newData) => addData(type, newData)}
-        /> : null }
-        {this.state.editFormToggled === true ? <CategoryForm
-          reviewedCategory={this.state.reviewedCategory}
-          toggleForm={(type, boolean, data) => this.toggleForm(type, boolean, data)}
-          formType={'edit'}
-          primaryFormAction={(type, newData) => changeData(type, newData)}
-        /> : null}
+        { this.state.addFormToggled === true ? 
+          <CategoryForm 
+            reviewedCategory={this.state.reviewedCategory}
+            key={Date.now()}
+            toggleForm={(type, boolean, data) => this.toggleForm(type, boolean, data)}
+            formType={'add'}
+            primaryFormAction={(type, newData) => addData(type, newData)}
+          /> : null }
+        {this.state.editFormToggled === true ? 
+          <CategoryForm
+            reviewedCategory={this.state.reviewedCategory}
+            key={Date.now()}
+            toggleForm={(type, boolean, data) => this.toggleForm(type, boolean, data)}
+            formType={'edit'}
+            primaryFormAction={(type, newData) => changeData(type, newData)}
+          /> : null}
         { this.state.addFormToggled === false ? 
           <button className="add-category-btn" onClick={() => this.toggleForm('add', true, {})}>+</button>
         : null}

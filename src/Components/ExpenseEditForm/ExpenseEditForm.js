@@ -37,42 +37,46 @@ class ExpenseEditForm extends Component {
   }
 
   render() {
+    const { toggleForm, formType } = this.props; 
     return (
-      <form className='expense-edit-form'>
-        <label className="form-labels">Account</label>
-        <input
-          className="edit-expense-input"
-          name="accountId"
-          value={this.state.accountId}
-          onChange={(e) => this.handleChange(e)}
-        />
-        <label className="form-labels">Date</label>
-        <input
-          className="edit-expense-input"
-          name="date"
-          value={this.state.date}
-          onChange={(e) => this.handleChange(e)}
-        />
-        <label className="form-labels">Amount</label>
-        <input
-          className="edit-expense-input"
-          name="amount"
-          value={this.state.amount}
-          onChange={(e) => this.handleChange(e)}
-        />
-        <label className="form-labels">Category</label>
-        <input
-          className="edit-expense-input"
-          name="categoryId"
-          value={this.state.categoryId}
-          onChange={(e) => this.handleChange(e)}
-        />
-        <button 
-          className="submit-change-btn"
-          onClick={(e) => this.submitChange(e)}
-          >Submit Changes
-        </button>
-      </form>
+      <section className="faded-background">
+        <form className='expense-edit-form'>
+          <button className='close-window-btn' onClick={() => toggleForm(formType, false, {})}>X</button>
+          <label className="form-labels">Account</label>
+          <input
+            className="edit-expense-input"
+            name="accountId"
+            value={this.state.accountId}
+            onChange={(e) => this.handleChange(e)}
+          />
+          <label className="form-labels">Date</label>
+          <input
+            className="edit-expense-input"
+            name="date"
+            value={this.state.date}
+            onChange={(e) => this.handleChange(e)}
+          />
+          <label className="form-labels">Amount</label>
+          <input
+            className="edit-expense-input"
+            name="amount"
+            value={this.state.amount}
+            onChange={(e) => this.handleChange(e)}
+          />
+          <label className="form-labels">Category</label>
+          <input
+            className="edit-expense-input"
+            name="categoryId"
+            value={this.state.categoryId}
+            onChange={(e) => this.handleChange(e)}
+          />
+          <button 
+            className="submit-change-btn"
+            onClick={(e) => this.submitChange(e)}
+            >Submit Changes
+          </button>
+        </form>
+      </section>
     )
   }
 }
