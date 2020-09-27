@@ -9,6 +9,7 @@
   border: 1px solid rgb(117 112 112 / 9%);
   border-radius: 10px;
   color: rgb(117 112 112 / 40%);
+  cursor: pointer;
   font-size: 75px;
 }
 
