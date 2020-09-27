@@ -24,11 +24,16 @@ class App extends Component {
   }
 
   changeData = (type, newData) => {
-    const newDataCollection = this.state[type].map(account => {
-      return account.id === newData.id ? newData : account;
+    const newDataCollection = this.state[type].map(data => {
+      return data.id === newData.id ? newData : data;
     });
     this.setState({ [type]: newDataCollection });
   }
+
+  removeData = (type, targetData) => {
+    const newDataCollection = this.state[type].splice(targetData.id - 1, 1) 
+    this.setState({ [type]: newDataCollection });
+  };
 
   submitExpenseChanges = (editedExpense) => {
     const newExpesneData = this.state.expenseData.map(expense => {
@@ -67,6 +72,7 @@ class App extends Component {
         { this.state.pageToggled === 'account' ? 
           <AccountDashboard
             accountData={accountData}
+            removeData={(type, targetData) => this.removeData(type, targetData)}
             changeData={(type, newData) => this.changeData(type, newData)}
             addData={(type, data) => this.addData(type, data)}
           /> 
