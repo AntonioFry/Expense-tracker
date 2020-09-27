@@ -51,6 +51,9 @@ class CategoryDashboard extends Component {
           formType={'edit'}
           primaryFormAction={(type, newData) => changeData(type, newData)}
         /> : null}
+        { this.state.addFormToggled === false ? 
+          <button className="add-category-btn" onClick={() => this.toggleForm('add', true, {})}>+</button>
+        : null}
       </section>
     )
   }
