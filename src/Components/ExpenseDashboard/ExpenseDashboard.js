@@ -17,7 +17,6 @@ class ExpenseDashboard extends Component {
     if (type === 'edit') {
       await this.setState({ editFormToggled: boolean });
       await this.setState({ reviewedExpense: data });
-      console.log(this.state.reviewedExpense)
     } else if (type === 'add') {
       await this.setState({ addFormToggled: boolean })
     }

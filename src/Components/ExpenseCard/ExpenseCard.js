@@ -1,7 +1,7 @@
 import React from 'react';
 import './ExpenseCard.css';
 
-const ExpenseCard = ({ id, date, account, category, amount, toggleEditForm, removeData }) => {
+const ExpenseCard = ({ id, date, account, category, amount, toggleForm, removeData }) => {
   return (
       <tr>
         <td className="table-box">{date}</td>
@@ -9,7 +9,11 @@ const ExpenseCard = ({ id, date, account, category, amount, toggleEditForm, remo
         <td className="table-box">${amount}</td>
         <td className="table-box">{category}</td>
         <td className="table-btn">
-          <button className="expense-card-btn" onClick={() => toggleEditForm(true, { id, date, account, category, amount })}>Edit</button>
+          <button
+            className="expense-card-btn"
+            onClick={() => toggleForm('edit', true, { id, date, account, category, amount })}
+            >Edit
+          </button>
         </td>
         <td className="table-btn">
           <button className="expense-card-btn" onClick={() => removeData('expenseData', id)}>Remove</button>
