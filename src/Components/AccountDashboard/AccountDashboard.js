@@ -8,12 +8,22 @@ class AccountDashboard extends Component {
     super();
     this.state = {
       editFormToggled: false,
-      addFormToggled: true
+      addFormToggled: false,
+      reviewedAccount: {},
+    }
+  }
+
+  toggleForm = async (type, boolean, data) => {
+    if (type === 'edit') {
+      await this.setState({ editFormToggled: boolean });
+      await this.setState({ reviewedAccount: data });
+    } else if (type === 'add') {
+      await this.setState({ addFormToggled: boolean })
     }
   }
 
   render() {
-    const { accountData, addData, editData } = this.props;
+    const { accountData, addData, changeData } = this.props;
     const mappedAccounts = accountData.map(account => {
       return (
         <AccountCard 
@@ -21,6 +31,7 @@ class AccountDashboard extends Component {
           title={account.title}
           color={account.color}
           type={account.type}
+          toggleForm={(type, boolean, data) => this.toggleForm(type, boolean, data)}
         />
       )
     });
@@ -28,10 +39,12 @@ class AccountDashboard extends Component {
       <section className="account-dashboard-section">
         {mappedAccounts}
         { this.state.addFormToggled === true ? <AccountForm
+          reviewedAccount={this.state.reviewedAccount}
           primaryFormAction={(type, data) => addData(type, data)}
         /> : null }
         {this.state.editFormToggled === true ? <AccountForm
-          primaryFormAction={(type, data) => editData(type, data)}
+          reviewedAccount={this.state.reviewedAccount}
+          primaryFormAction={(type, newData) => changeData(type, newData)}
         /> : null}
       </section>
     )

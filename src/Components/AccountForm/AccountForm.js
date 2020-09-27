@@ -11,6 +11,16 @@ class AccountForm extends Component {
     }
   }
 
+  componentDidUpdate() {
+    const { reviewedAccount } = this.props;
+    if (this.state.id !== reviewedAccount.id) {
+      this.setState({ id: reviewedAccount.id })
+      this.setState({ title: reviewedAccount.title })
+      this.setState({ type: reviewedAccount.type })
+      this.setState({ color: reviewedAccount.color })
+    }
+  }
+
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   }

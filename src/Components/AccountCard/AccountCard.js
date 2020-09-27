@@ -1,7 +1,7 @@
 import React from 'react';
 import './AccountCard.css';
 
-const AccountCard = ({ id, title, color, type }) => {
+const AccountCard = ({ id, title, color, type, toggleForm }) => {
   const headerColorStyle = {
     'backgroundColor': color
   }
@@ -9,6 +9,14 @@ const AccountCard = ({ id, title, color, type }) => {
     <article className="account-card">
       <header className='account-card-header' style={headerColorStyle}>
         <h3 className='account-card-heading'>Account #{id}</h3>
+        <div>
+          <button 
+            className="account-card-btn" 
+            onClick={() => toggleForm('edit', true, { id, title, color, type })}
+            >Edit
+          </button>
+          <button className="account-card-btn">Remove</button>
+        </div>
       </header>
       <p className="account-card-text"><span className="account-info-label">Account Title:</span> {title}</p>
       <p className="account-card-text"><span className="account-info-label">Type:</span> {type}</p>

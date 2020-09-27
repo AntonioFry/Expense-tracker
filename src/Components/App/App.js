@@ -24,10 +24,10 @@ class App extends Component {
   }
 
   changeData = (type, newData) => {
-    this.state[type].map(account => {
+    const newDataCollection = this.state[type].map(account => {
       return account.id === newData.id ? newData : account;
     });
-    this.setState({ [type]: newData });
+    this.setState({ [type]: newDataCollection });
   }
 
   submitExpenseChanges = (editedExpense) => {
@@ -67,6 +67,7 @@ class App extends Component {
         { this.state.pageToggled === 'account' ? 
           <AccountDashboard
             accountData={accountData}
+            changeData={(type, newData) => this.changeData(type, newData)}
             addData={(type, data) => this.addData(type, data)}
           /> 
         : null }
