@@ -40,12 +40,17 @@ class AccountDashboard extends Component {
         {mappedAccounts}
         { this.state.addFormToggled === true ? <AccountForm
           reviewedAccount={this.state.reviewedAccount}
+          formType={'add'}
+          toggleForm={(type, boolean, data) => this.toggleForm(type, boolean, data)}
           primaryFormAction={(type, data) => addData(type, data)}
         /> : null }
         {this.state.editFormToggled === true ? <AccountForm
           reviewedAccount={this.state.reviewedAccount}
+          formType={'edit'}
+          toggleForm={(type, boolean, data) => this.toggleForm(type, boolean, data)}
           primaryFormAction={(type, newData) => changeData(type, newData)}
         /> : null}
+        <button className="add-account-btn" onClick={() => this.toggleForm('add', true, {})}>+</button>
       </section>
     )
   }

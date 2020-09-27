@@ -27,9 +27,10 @@ class AccountForm extends Component {
 
   submitChange = (e) => {
     e.preventDefault();
-    const { primaryFormAction } = this.props;
+    const { primaryFormAction, toggleForm, formType } = this.props;
     const newData = { ...this.state };
     primaryFormAction('accountData', newData);
+    toggleForm(formType, false, {});
   }
 
   render() {
