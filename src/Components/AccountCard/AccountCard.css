@@ -5,8 +5,22 @@
   padding: 0px;
 }
 
+.account-card-header {
+  display: flex;
+  justify-content: space-between;
+}
+
 .account-card-heading {
   margin: 0px 8px;
+}
+
+.account-card-btn {
+  background-color: transparent;
+  color: black;
+  cursor: pointer;
+  border: none;
+  height: 100%;
+  margin: 0px 3px;
 }
 
 .account-card-text {
