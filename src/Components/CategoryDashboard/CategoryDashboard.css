@@ -3,3 +3,19 @@
   grid-template-columns: 1fr 1fr 1fr;
   justify-items: center;
 }
+
+.add-category-btn {
+  border: 1px solid rgb(117 112 112 / 9%);
+  border-radius: 10px;
+  color: rgb(117 112 112 / 40%);
+  cursor: pointer;
+  font-size: 75px;
+  height: 150px;
+  margin: 35px 0px;
+  width: 75%;
+}
+
+.add-category-btn:hover {
+  border: 1px solid rgb(117 112 112 / 19%);
+  color: rgb(117 112 112 / 50%);
+}
