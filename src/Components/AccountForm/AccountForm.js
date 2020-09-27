@@ -13,7 +13,7 @@ class AccountForm extends Component {
 
   componentDidUpdate() {
     const { reviewedAccount } = this.props;
-    if (this.state.id !== reviewedAccount.id) {
+    if (this.state.id !== reviewedAccount.id && reviewedAccount.id !== undefined) {
       this.setState({ id: reviewedAccount.id })
       this.setState({ title: reviewedAccount.title })
       this.setState({ type: reviewedAccount.type })
