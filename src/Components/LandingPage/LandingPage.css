@@ -1,0 +1,29 @@
+.project-info-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.text-container {
+  padding: 20px 50px;
+  width: 400px;
+}
+
+.gif-container {
+  padding: 30px;
+}
+
+.intro-text {
+  font-size: 1.3em;
+}
+
+.external-links-container {
+  align-items: flex-end;
+  display: flex;
+  height: 225px;
+  justify-content: space-evenly;
+  padding: 40px 0px;
+}
+
+.social-image {
+  width: 70px;
+}
